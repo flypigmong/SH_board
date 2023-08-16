@@ -5,9 +5,9 @@
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
 		
-	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">	
- 		<property name="driverClassName" value="com.mysql.cj.jdbc.Driver"></property>
-		<property name="jdbcUrl" value="jdbc:mysql://127.0.0.1:3307/book?serverTimezone=Asia/Seoul"></property> 
+	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">	 		
+ 		<property name="driverClassName" value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"></property>
+		<property name="jdbcUrl" value="jdbc:log4jdbc:mysql://127.0.0.1:3307/book?serverTimezone=Asia/Seoul"></property> 
 		<property name="username" value="castello"></property>
 		<property name="password" value="0000"></property>
 	</bean>		
