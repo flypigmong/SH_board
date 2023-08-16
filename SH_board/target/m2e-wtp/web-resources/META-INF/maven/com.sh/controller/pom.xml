@@ -113,7 +113,14 @@
 		    <artifactId>mysql-connector-java</artifactId>
 		    <version>8.0.32</version>
 		</dependency>
-		
+	
+		<!-- 커넥션 풀(Hikari) -->
+		<dependency>
+		   <groupId>com.zaxxer</groupId>
+		   <artifactId>HikariCP</artifactId>
+		   <version>5.0.1</version>
+		</dependency>
+			
 		<!-- @Inject -->
 		<dependency>
 			<groupId>javax.inject</groupId>
