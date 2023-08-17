@@ -11,5 +11,12 @@
         
     </insert>
 
+
+	<!-- 게시판 목록 -->
+	<select id="getList" resultType="com.sh.model.BoardVO">
+	
+		select * from sh_board
+	
+	</select>
 	
   </mapper>
