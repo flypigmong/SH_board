@@ -64,7 +64,24 @@ public class BoardController {
     }
 
 
+    /* 수정 페이지 이동 */
+    @GetMapping("/modify")
+    public void boardModifyGET(int bno, Model model) {
+    	
+    	model.addAttribute("pageInfo", service.getPage(bno));
+    	
+    }
 
-
+    /* 페이지 수정 */
+    @GetMapping("/modify")
+    public String boardModifyPOST(BoardVO board, RedirectAttributes rttr) {
+    		
+    		service.modify(board);
+    		
+    		rttr.addFlashAttribute("result", "modify success");
+    		
+    		return "redirect:/board/list";
+    		
+    }
 
 }
