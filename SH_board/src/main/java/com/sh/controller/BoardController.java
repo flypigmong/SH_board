@@ -73,7 +73,7 @@ public class BoardController {
     }
 
     /* 페이지 수정 */
-    @GetMapping("/modify")
+    @PostMapping("/modify")
     public String boardModifyPOST(BoardVO board, RedirectAttributes rttr) {
     		
     		service.modify(board);
