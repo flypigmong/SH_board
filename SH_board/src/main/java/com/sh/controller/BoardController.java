@@ -37,13 +37,13 @@ public class BoardController {
 
     /* 게시판 등록 */
     @PostMapping("/enroll")
-    public String boardEnrollPOST(BoardVO board, RedirectAttributes rttr) {  // 
+    public String boardEnrollPOST(BoardVO board, RedirectAttributes rttr) { 
         
         log.info("BoardVO : " + board);
         
         service.enroll(board);
         
-        rttr.addFlashAttribute("result", "enroll success");
+        rttr.addFlashAttribute("result", "enroll success"); //일회성 전달하기 위한 addFlashAttribute()
         
 		return "redirect:/board/list";
         
