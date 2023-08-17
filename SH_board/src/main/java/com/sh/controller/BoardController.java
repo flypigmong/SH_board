@@ -37,7 +37,7 @@ public class BoardController {
 
     /* 게시판 등록 */
     @PostMapping("/enroll")
-    public String boardEnrollPOST(BoardVO board, RedirectAttributes rttr) {
+    public String boardEnrollPOST(BoardVO board, RedirectAttributes rttr) {  // 
         
         log.info("BoardVO : " + board);
         
