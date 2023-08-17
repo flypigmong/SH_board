@@ -37,18 +37,31 @@ public class BoardMapperTests {
     }
     */
     
-    /* 게시판 목록 테스트 */
+    /*
+    // 게시판 목록 테스트 
     @Test
     public void testGetList() {
         
         List list = mapper.getList();
-       /* 일반적 for문 */
+       // 일반적 for문 
         for(int i = 0; i < list.size();i++) {
             log.info("" + list.get(i));
         }
         
     }
 
+	*/
+    
+    //게시판 조회
+    @Test
+    public void testGetPage() {
+    	
+    	// 실제 존재하는 페이지 
+    	int bno = 7;
+    	
+    	log.info("" + mapper.getPage(bno));
+    	
+    }
 
     
 }

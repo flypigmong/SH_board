@@ -73,13 +73,19 @@
 				<c:forEach items="${list}" var="list">
 					<tr>
 							<td><c:out value="${list.bno}"/></td>
-							<td><c:out value="${list.title}"/></td>
+							<td>
+									<a class="move" href='<c:out value="${list.bno}"/>'>
+										<c:out value="${list.title}"/>
+									</a>
+							</td>
 							<td><c:out value="${list.writer}"/></td>
               				<td><fmt:formatDate pattern="yyyy/MM/dd" value="${list.regdate}"/></td>
                				<td><fmt:formatDate pattern="yyyy/MM/dd" value="${list.updateDate}"/></td>
 					</tr>
 				</c:forEach>
 		</table>
+		<form id="moveForm" method="get">
+		</form>
 </div>
 
 <script>
@@ -101,8 +107,20 @@
 			}
 			
 		});
-		
 
+		
+		
+	    let moveForm = $("#moveForm");
+	    
+	    $(".move").on("click", function(e){
+	        e.preventDefault();       // board/bno 로 가는것 방지하고 밑에 코드 실행하도록 함
+	        
+	        moveForm.append("<input type='hidden' name='bno' value='"+ $(this).attr("href")+ "'>");   //moveForm 변수에 저장된 jQuery객체에 input태그를 추가.input태그의 타입은 hidden,이름은 bno, 값은 클릭한 요소의 href 속성값
+	        moveForm.attr("action", "/board/get");     //moveForm 변수에 저장된 jQuery객체의 action 속성을 /board/get으로 설정
+	        moveForm.submit();
+	    });    
+	 //class가 move인 HTML 요소를 클릭하면, id가 moveForm인 HTML 요소에 input 태그를 추가하고, /board/get으로 요청을 보내는 기능을 수행.
+	// 예) board/get?bno=1
 </script>
 </body>
 </html>

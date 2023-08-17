@@ -19,4 +19,11 @@
 	
 	</select>
 	
+
+	<!--  게시판 조회 -->
+	<select id="getPage" resultType="com.sh.model.BoardVO">
+	
+			select * from sh_board where bno = ${bno}
+	
+	</select>
   </mapper>
