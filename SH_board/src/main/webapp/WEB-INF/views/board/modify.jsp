@@ -16,6 +16,7 @@
 .input_wrap{
 	padding: 5px 20px;
 }
+
 label{
     display: block;
     margin: 10px 0;
@@ -49,6 +50,10 @@ textarea{
 	padding-left : 80px;
 	margin-top : 50px;
 }
+
+#delete_btn{
+	background-color:#f3e3e7;
+}
 </style>
 </head>
 <body>
@@ -81,6 +86,7 @@ textarea{
 	<div class="btn_wrap">
 			<a class="btn" id="list_btn">목록 페이지</a>
 			<a class="btn" id="modify_btn">수정 완료</a>
+			<a class="btn" id="delete_btn">삭제</a>
 			<a class="btn" id="cancel_btn">수정 취소</a>
 	</div>
 	</form>
@@ -90,7 +96,7 @@ textarea{
 <script>
 
 		let form = $("#infoForm");        // 페이지 이동 form(리스트 페이지 이동, 조회 페이지 이동)
-		let mForm = $("#modifyForm");    // 페이지 데이터 수정 from
+		let mForm = $("#modifyForm");    // 페이지 데이터 수정 form
 		
 		/* 목록 페이지 이동 버튼 */
 		$("#list_btn").on("click", function(e){
@@ -110,6 +116,14 @@ textarea{
 		    form.submit();
 		});    
 
+		/* 삭제 버튼 */
+		$("#delete_btn").on("click", function(e){
+			form.attr("action", "/board/delete");
+			form.attr("method", "post");
+			form.submit();
+		});
+		
+		
 </script>	
 </body>
 </html>
