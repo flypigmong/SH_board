@@ -53,6 +53,25 @@
     border: 1px solid #ddd;
     font-weight: 600;
   }
+  
+  //버튼 css
+  
+   .pageInfo{
+      list-style : none;
+      display: inline-block;
+    margin: 50px 0 0 100px;      
+  }
+  .pageInfo li{
+      float: left;
+    font-size: 20px;
+    margin-left: 18px;
+    padding: 7px;
+    font-weight: 500;
+  }
+ a:link {color:black; text-decoration: none;}
+ a:visited {color:black; text-decoration: none;}
+ a:hover {color:black; text-decoration: underline;} 
+  
   </style>
 </head>
 <body>
@@ -84,7 +103,29 @@
 					</tr>
 				</c:forEach>
 		</table>
+		
+		<div class="pageInfo_wrap">
+			<div class="pageInfo_area">
+				<ul id="pageInfo" class="pageInfo">
+				
+					<!--  각 번호 페이지 이동 -->
+					<c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
+							<li class="pageInfo_btn">	
+								 <a href="${num}">
+								 		${num}
+								 </a>
+							</li>
+					</c:forEach>
+			
+				</ul>
+			</div>
+		</div>
+		
+		
+		
 		<form id="moveForm" method="get">
+				<input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum}">
+				<input type="hidden" name="amount" value="${pageMaker.cri.amount}">
 		</form>
 </div>
 
@@ -129,6 +170,19 @@
 	    });    
 	 //class가 move인 HTML 요소를 클릭하면, id가 moveForm인 HTML 요소에 input 태그를 추가하고, /board/get으로 요청을 보내는 기능을 수행.
 	// 예) board/get?bno=1
+			
+	
+		
+	     $(".pageInfo a").on("click", function(e) {   //class가 pageInfo인 요소 안에 있는 모든 a태그 선택하고, 선택한 a태그에 클릭 이벤트 연결
+	    	 
+	    	 e.preventDefault();    //a태그의 href속성 링크로 이동하는 것 멈춤
+	    	 moveForm.find("input[name='pageNum']").val($(this).attr("href"));  // name이 pageNum인 input 요소의 값으로 ,클릭한 <a> 태그의 href속성 값 설정
+	    	 moveForm.attr("action", "/board/list");   //<form>태그 action 속성을 '/board/list'로 설정
+	    	 moveForm.submit();  //<form>태그 서버 전송
+	    	 
+	     });
+			
+			
 </script>
 </body>
 </html>
