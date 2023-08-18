@@ -53,4 +53,12 @@
 		limit #{skip},#{amount} <!-- skip = pageNum -1 -->
 	
 	</select>
+	
+	
+	<!--  게시물 총 갯수 -->
+	<select id="getTotal" resultType="int">
+	
+		 select count(*) from sh_board
+			
+	</select>
   </mapper>

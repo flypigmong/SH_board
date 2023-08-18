@@ -57,4 +57,10 @@ public class BoardServiceImpl implements BoardService {
 		return mapper.delete(bno);
 	}
 
+	@Override
+	public int getTotal() {
+		
+		return mapper.getTotal();
+	}
+
 }
