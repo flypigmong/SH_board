@@ -65,6 +65,7 @@ public class BoardMapperTests {
     }
 	*/
     
+    /*
     //게시판 수정
     @Test
     public void testModify() {
@@ -78,5 +79,15 @@ public class BoardMapperTests {
     	log.info("result : " + result);
     			
     }
+    */
     
+    
+    // 게시판 삭제
+    @Test
+    public void testDelete() {
+    	
+    	int result = mapper.delete(23);  //delete 메소드의 반환값은 삭제된 게시글의 개수를 의미
+    	log.info("result : " + result);  // 성공적으로 삭제하면 1, 실패하면 0 반환
+    	
+    }
 }
