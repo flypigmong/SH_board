@@ -77,9 +77,10 @@ public class BoardController {
 
     /* 게시판 조회 */
     @GetMapping("/get")
-    public void boardGetPageGET(int bno, Model model) {
+    public void boardGetPageGET(int bno, Model model, Criteria cri) {
     	
     	model.addAttribute("pageInfo", service.getPage(bno));
+    	model.addAttribute("cri", cri);    // 조회(get.jsp)>다시 목록으로 돌아갈 때 원래 페이지로 돌아가기 위해 가져올 pageNum,amount데이터가 있는 Criteria 인스턴스 저장
     	
     }
 
