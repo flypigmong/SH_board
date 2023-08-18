@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.sh.mapper.BoardMapper;
 import com.sh.model.BoardVO;
+import com.sh.model.Criteria;
 
 @Service
 public class BoardServiceImpl implements BoardService {
@@ -29,6 +30,13 @@ public class BoardServiceImpl implements BoardService {
 		return mapper.getList();
 	}
 
+	/* 게시글 목록(페이징 적용) */
+	@Override
+	public List<BoardVO> getListPaging(Criteria cri) {
+		
+		return mapper.getListPaging(cri);
+	}
+	
 	/* 게시판 조회 */
 	@Override
 	public BoardVO getPage(int bno) {
@@ -48,4 +56,5 @@ public class BoardServiceImpl implements BoardService {
 		
 		return mapper.delete(bno);
 	}
+
 }

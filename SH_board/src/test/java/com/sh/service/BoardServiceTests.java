@@ -1,5 +1,7 @@
 package com.sh.service;
 
+import java.util.List;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -9,6 +11,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.sh.model.BoardVO;
+import com.sh.model.Criteria;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("file:src/main/webapp/WEB-INF/spring/root-context.xml")
@@ -72,6 +75,7 @@ public class BoardServiceTests {
     } 
     */
     
+    /*
     //게시판 삭제
     @Test
     public void testDelete() {
@@ -80,4 +84,20 @@ public class BoardServiceTests {
     	log.info("result : " +result);
     	
     }
+    */
+    
+    //게시판 조회(페이징 적용)
+    @Test
+    public void testGetListPagin() {
+    	
+    	Criteria cri = new Criteria();
+    	
+    	cri.setPageNum(1); //20~11    limit(0,10)
+    	//cri.setPageNum(2); //10~1 		limit(1,10)
+    	
+    	List list = service.getListPaging(cri);
+    	list.forEach(board -> log.info("" + board));
+    }
+    
+    
 }

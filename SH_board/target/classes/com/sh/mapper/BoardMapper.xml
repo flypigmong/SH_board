@@ -44,4 +44,13 @@
 	</delete>
 	
 	
+	<!-- 게시물 목록(페이징) -->
+	<select id="getListPaging" resultType="com.sh.model.BoardVO">
+		
+		select * from ( 
+			select bno,title,writer,regdate,updatedate 
+				from sh_board order by bno desc) as T1								
+		limit #{skip},#{amount} <!-- skip = pageNum -1 -->
+	
+	</select>
   </mapper>

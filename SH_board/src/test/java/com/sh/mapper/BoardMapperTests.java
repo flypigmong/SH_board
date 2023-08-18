@@ -11,6 +11,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.sh.model.BoardVO;
+import com.sh.model.Criteria;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("file:src/main/webapp/WEB-INF/spring/root-context.xml")
@@ -81,7 +82,7 @@ public class BoardMapperTests {
     }
     */
     
-    
+    /*
     // 게시판 삭제
     @Test
     public void testDelete() {
@@ -90,4 +91,21 @@ public class BoardMapperTests {
     	log.info("result : " + result);  // 성공적으로 삭제하면 1, 실패하면 0 반환
     	
     }
+    */
+    
+    
+    /* 게시판 목록(페이징 적용) 테스트 */
+    @Test
+    public void testGetListPaging() {
+    	
+    	Criteria cri = new Criteria();        //Criteria(int pageNum, int amount)
+    	
+    	//cri.setPageNum(1); //20~11    limit(0,10)
+    	cri.setPageNum(2); //10~1 		limit(1,10)
+    	cri.setAmount(10);
+    	
+    	List list  = mapper.getListPaging(cri);
+    	list.forEach(board -> log.info("" + board));
+    }
+    
 }
