@@ -87,9 +87,10 @@ public class BoardController {
 
     /* 수정 페이지 이동 */
     @GetMapping("/modify")
-    public void boardModifyGET(int bno, Model model) {
+    public void boardModifyGET(int bno, Model model, Criteria cri) {
     	
     	model.addAttribute("pageInfo", service.getPage(bno));
+    	model.addAttribute("cri", cri);    // 수정->목록 돌아갈때 원래페이지 돌아가기위한 Criteria 인스턴스 저장  
     	
     }
 
