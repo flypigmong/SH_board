@@ -96,11 +96,21 @@ public class BoardController {
 
     /* 페이지 수정 */
     @PostMapping("/modify")
-    public String boardModifyPOST(BoardVO board, RedirectAttributes rttr) {
+    public String boardModifyPOST(BoardVO board, RedirectAttributes rttr, Model model,Criteria cri) {
     		
     		service.modify(board);
     		
     		rttr.addFlashAttribute("result", "modify success");
+    		
+            // 페이지 번호와 페이지 크기를 RedirectAttributes에 추가
+            rttr.addAttribute("pageNum", cri.getPageNum());
+            rttr.addAttribute("amount", cri.getAmount());
+    		
+    		
+    		//model.addAttribute("cri", cri);
+    		
+
+    		log.info("" + cri);
     		
     		return "redirect:/board/list";
     		

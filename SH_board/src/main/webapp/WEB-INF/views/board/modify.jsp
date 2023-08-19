@@ -59,6 +59,9 @@ textarea{
 <body>
 <h1>조회 페이지</h1>
 	<form id="modifyForm" action="/board/modify" method="post">
+		<input type="hidden" id="bno" name="bno" value='<c:out value="${pageInfo.bno}"/>'>
+		<input type="hidden" name="pageNum" value='<c:out value="${cri.pageNum}"/>'>
+		<input type="hidden" name="amount" value='<c:out value="${cri.amount}"/>'>
 	<div class="input_wrap">
 		<label>게시판 번호</label>
 		<input name="bno" readonly="readonly" value='<c:out value="${pageInfo.bno}"/>' >
@@ -84,7 +87,9 @@ textarea{
 		<input name="updateDate" readonly="readonly" value='<fmt:formatDate pattern="yyyy/MM/dd" value="${pageInfo.updateDate}"/>' >
 	</div>		
 	<div class="btn_wrap">
-			<a class="btn" id="list_btn">목록 페이지</a>
+			<!-- <a href="/board/list?pageNum=${cri.pageNum}&amount=${cri.amount}">목록</a>
+			-->
+			<a class="btn" id="list_btn">목록 페이지</a> 
 			<a class="btn" id="modify_btn">수정 완료</a>
 			<a class="btn" id="delete_btn">삭제</a>
 			<a class="btn" id="cancel_btn">수정 취소</a>
@@ -95,6 +100,14 @@ textarea{
 		<input type="hidden" name="pageNum" value='<c:out value="${cri.pageNum}"/>'>
 		<input type="hidden" name="amount" value='<c:out value="${cri.amount}"/>'>
 	</form>
+	
+	<!--
+	 <form id="infoForm2" action="/board/modify" method="post">
+		<input type="hidden" id="bno" name="bno" value='<c:out value="${pageInfo.bno}"/>'>
+		<input type="hidden" name="pageNum" value='<c:out value="${cri.pageNum}"/>'>
+		<input type="hidden" name="amount" value='<c:out value="${cri.amount}"/>'>
+	</form>
+	-->
 <script>
 
 		let form = $("#infoForm");        // 페이지 이동 form(리스트 페이지 이동, 조회 페이지 이동)
@@ -109,7 +122,10 @@ textarea{
 		
 		/* 수정 하기 버튼 */
 		$("#modify_btn").on("click", function(e){
-		    mForm.submit();
+			//mForm.attr("action", "/board/list");
+ 			mForm.append("<input type='hidden' name='pageNum' value='<c:out value="${cri.pageNum}"/>'>");
+    		mForm.append("<input type='hidden' name='amount' value='<c:out value="${cri.amount}"/>'>");		    
+			mForm.submit();
 		});
 		
 		/* 취소 버튼 */
