@@ -121,7 +121,7 @@ public class BoardMapperTests {
 		 cri.setType("T");
 		 */
 		 System.out.println("------------------------------------" + cri);
-		 int result = mapper.getTotal();
+		 int result = mapper.getTotal(cri);
 		 
 		 log.info("" + result);
 	 }
