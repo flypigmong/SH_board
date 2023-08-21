@@ -1,5 +1,7 @@
 package com.sh.model;
 
+import java.util.Arrays;
+
 public class Criteria {
 	
 	/* 현재 페이지 */
@@ -11,6 +13,11 @@ public class Criteria {
 	/* 검색 키워드 */
 	private String keyword;
 	
+	/* 검색 타입 */
+	private String type;
+	
+	/* 검색 타입 배열 변환 */
+	private String[] typeArr;
 	
 	/* 스킵 할 게시물 수( ( pageNum-1 ) * amount )  */
 	private int skip;
@@ -64,9 +71,27 @@ public class Criteria {
 		this.keyword = keyword;
 	}
 
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+		this.typeArr = type.split("");
+	}
+
+	public String[] getTypeArr() {
+		return typeArr;
+	}
+
+	public void setTypeArr(String[] typeArr) {
+		this.typeArr = typeArr;
+	}
+
 	@Override
 	public String toString() {
-		return "Criteria [pageNum=" + pageNum + ", amount=" + amount + ", keyword=" + keyword + ", skip=" + skip + "]";
+		return "Criteria [pageNum=" + pageNum + ", amount=" + amount + ", keyword=" + keyword + ", type=" + type
+				+ ", typeArr=" + Arrays.toString(typeArr) + ", skip=" + skip + "]";
 	}
 
 
