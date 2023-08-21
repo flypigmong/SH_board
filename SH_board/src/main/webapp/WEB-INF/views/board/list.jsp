@@ -89,7 +89,7 @@
     height: 36px;
   }
    
-   .search_area_select{
+   .search_area select{
    	  height: 35px;
    }
    
